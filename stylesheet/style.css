@@ -1,0 +1,31 @@
+﻿@import url("reset.css");
+@import url("fonts.css");
+
+html,body {
+    height: 100%;
+    width: 100vw;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Murecho", sans-serif;
+    animation: fontWeight 2s infinite;
+}
+
+.whereHands{
+    font-size: 6vw;
+    text-align: center;
+}
+
+@keyframes fontWeight {
+    0% {font-weight: 100}
+    50% {font-weight: 900}
+    100% {font-weight: 100}
+}
+
+@media (orientation: portrait) {
+    .whereHands{
+        font-size: 15vw;
+    }
+}
