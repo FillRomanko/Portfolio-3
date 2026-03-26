@@ -1,0 +1,1 @@
+﻿<img src="https://media1.tenor.com/m/4s9l7HDFPmQAAAAd/dog-dog-staring-at-sun.gif"></img>

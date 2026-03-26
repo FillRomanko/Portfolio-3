@@ -8,7 +8,120 @@
     <!-- <link rel="icon" type="image/svg+xml" href="images/icon.svg"> -->
 </head>
 <body>
-    <div class="whereHands">а&nbsp;где&nbsp;же наши ручки i&nbsp;dont know</div>
+    <div class="nav-dots" id="navDots">
+        <button class="nav-dot active" data-target="slide1"></button>
+        <button class="nav-dot" data-target="slide2"></button>
+        <button class="nav-dot" data-target="slide3"></button>
+    </div>
+
+    <main>
+        <section id="slide1" class="slide">
+            <div class="slide-inner">
+                <header class="slide-header">
+                    <h1 class="slide-title">ВРЕМЯ — ЭТО ВРАГ</h1>
+                    <p class="slide-subtitle">
+                        Экран, который не отпускает. Попробуй освободить его от лишних
+                        уведомлений.
+                    </p>
+                </header>
+
+                <div class="slide-body">
+                    <p class="slide-text">
+                        За день мы получаем десятки пуш‑уведомлений от приложений, которые
+                        обещали сделать нас продуктивнее. Здесь они — просто шум, который
+                        нужно смахнуть, чтобы увидеть чистый экран.
+                    </p>
+
+                    <div class="game-area">
+                        <div class="phone-shell" id="phoneShell">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <button class="phone-play-btn" id="phonePlayBtn">▶</button>
+                                <div class="notif-list" id="notifList"></div>
+                                <div class="phone-result" id="phoneResult">
+                                    <div class="phone-result-inner" id="phoneResultText"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-stats">
+                        <span id="notifCounter">Уведомления: 0</span>
+                        <span id="notifMessage"></span>
+                    </div>
+                    <button class="btn-primary" id="notifResetBtn">
+                        Начать снова
+                    </button>
+                    <p class="note">
+                        Смахивай карточку влево или вправо (тач или мышь), чтобы убрать её.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 2D Crossy road с иконками приложений -->
+        <section id="slide2" class="slide">
+            <div class="slide-inner">
+                <header class="slide-header">
+                    <h1 class="slide-title">Сквозь поток приложений</h1>
+                    <p class="slide-subtitle">
+                        Дойди до правого края, уклоняясь от иконок.
+                    </p>
+                </header>
+
+                <div class="slide-body">
+                    <div class="game-area">
+                        <div class="crossy-wrapper" id="runnerArea">
+                            <div class="crossy-header">
+                                <span id="runnerStatus">Нажми старт</span>
+                                <button class="btn-primary" id="runnerStartBtn">Старт</button>
+                            </div>
+                            <div class="crossy-grid" id="runnerField"></div>
+                            <div class="crossy-controls">
+                                <span>Управление: стрелки / W A S D / нажатие</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-stats">
+                        <span id="runnerStepsLabel">Пройдено: 0%</span>
+                        <span id="runnerRunsLabel">Завершено: 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Мемори из 6 карточек -->
+        <section id="slide3" class="slide">
+            <div class="slide-inner">
+                <header class="slide-header">
+                    <h1 class="slide-title">ПОМНИ ВАЖНОЕ</h1>
+                    <p class="slide-subtitle">
+                        Мини‑мемо из четырёх пар. Запомни и найди карточки, прежде чем внимание
+                        рассеется.
+                    </p>
+                </header>
+                <div class="slide-body">
+                    <p class="slide-text">
+                        Мозг быстро забывает даже значимые вещи, если они не повторяются.
+                        Здесь всего восемь карточек: потренируйся держать их в голове.
+                    </p>
+
+                    <div class="game-area">
+                        <div class="memory-grid" id="memoryGrid"></div>
+                    </div>
+
+                    <div class="memory-status" id="memoryStatus">
+                        Нажми на любую карточку, чтобы начать.
+                    </div>
+                    <button class="btn-primary" id="memoryResetBtn">
+                        Перемешать
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="scripts/main.js"></script>
 </body>
 </html>
