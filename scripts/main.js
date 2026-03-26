@@ -235,15 +235,15 @@ let fieldRect = null;
 
 // сюда подставите реальные пути к svg
 const iconSvgs = [
-    "assets/icons/i.svg",
-    "assets/icons/d.svg",
-    "assets/icons/f.svg",
-    "assets/icons/tg.svg",
-    "assets/icons/tk.svg",
-    "assets/icons/tw.svg",
-    "assets/icons/v.svg",
-    "assets/icons/x.svg",
-    "assets/icons/y.svg",
+    "./assets/icons/i.svg",
+    "./assets/icons/d.svg",
+    "./assets/icons/f.svg",
+    "./assets/icons/tg.svg",
+    "./assets/icons/tk.svg",
+    "./assets/icons/tw.svg",
+    "./assets/icons/v.svg",
+    "./assets/icons/x.svg",
+    "./assets/icons/y.svg",
 ];
 
 // "полосы" по вертикали, чтобы не пересекаться по X
@@ -673,10 +673,10 @@ const memoryStatus = document.getElementById("memoryStatus");
 const memoryResetBtn = document.getElementById("memoryResetBtn");
 
 const memoryPairs = [
-    "assets/images/m1.png",
-    "assets/images/m2.png",
-    "assets/images/m3.png",
-    "assets/images/m4.png"
+    "./assets/images/m1.png",
+    "./assets/images/m2.png",
+    "./assets/images/m3.png",
+    "./assets/images/m4.png"
 ];
 let memoryCards = [];
 let firstCard = null;
