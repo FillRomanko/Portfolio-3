@@ -1,3 +1,12 @@
 ﻿<img src="https://media1.tenor.com/m/4s9l7HDFPmQAAAAd/dog-dog-staring-at-sun.gif" width="416"></img>
 <img src="https://media1.tenor.com/m/zhBOsRJM2MsAAAAC/pomni-stare.gif" width="416"></img>
 <img src="https://media1.tenor.com/m/FjK0qdNwuSsAAAAC/alastor-hazbin-hotel.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/ZY16_IxQsMQAAAAC/arknights-endfield.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/EWiHVwPUEOoAAAAC/coxa-among-us.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/UC8TDXxucKgAAAAd/goida-%D0%B3%D0%BE%D0%B9%D0%B4%D0%B0.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/FpHhGgR4zvgAAAAC/social-credit-credit.gif" width="836"></img>
+<img src="https://media1.tenor.com/m/MrYny0riRw4AAAAC/hornet-silksong.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/RUUrMJs9T1cAAAAC/hollow-knight.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/tiynOtFgqaMAAAAd/kitty-%D0%BA%D0%BE%D1%82%D0%B5%D0%BD%D0%BE%D0%BA-%D0%BD%D0%B0-%D1%82%D1%80%D0%BE%D0%BD%D0%B5.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/hvh0ucb7o-4AAAAd/sonic-devil.gif" width="416"></img>
+<img src="https://media1.tenor.com/m/E8LKvzsigeUAAAAd/mcqueen-lightning.gif" width="836"></img>
