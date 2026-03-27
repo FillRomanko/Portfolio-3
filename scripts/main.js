@@ -29,7 +29,7 @@ window.addEventListener("scroll", setActiveDot);
 window.addEventListener("resize", setActiveDot);
 setActiveDot();
 
-/* ---------- 1. Свайп уведомлений ---------- */
+/* 1 */
 const notifList = document.getElementById("notifList");
 const notifCounter = document.getElementById("notifCounter");
 const notifMessage = document.getElementById("notifMessage");
@@ -213,10 +213,9 @@ phonePlayBtn.addEventListener("click", () => {
 
 notifResetBtn.addEventListener("click", resetGame);
 
-// начальное состояние
 resetGame();
 
-/* ---------- 2. Crossy с иконками ---------- */
+/* 2 */
 const runnerField = document.getElementById("runnerField");
 const runnerStartBtn = document.getElementById("runnerStartBtn");
 const runnerStatus = document.getElementById("runnerStatus");
@@ -233,7 +232,6 @@ let lastTimestamp = null;
 let finishedRuns = 0;
 let fieldRect = null;
 
-// сюда подставите реальные пути к svg
 const iconSvgs = [
     "./assets/icons/i.svg",
     "./assets/icons/d.svg",
@@ -246,21 +244,17 @@ const iconSvgs = [
     "./assets/icons/y.svg",
 ];
 
-// "полосы" по вертикали, чтобы не пересекаться по X
 const LANES = 5;
 
-// разовый пересчёт размеров и скоростей
 function updateFieldMetrics() {
     fieldRect = runnerField.getBoundingClientRect();
     const width = fieldRect.width;
     const height = fieldRect.height;
 
-    // скорость иконок и игрока (игрок быстрее в 1.5 раза)
-    runnerBaseObstacleSpeed = height / 1500; // ≈ полтора экрана за 2.5 c
+    runnerBaseObstacleSpeed = height / 1500;
     runnerPlayerSpeed = runnerBaseObstacleSpeed * 1.5;
 }
 
-// создание игрока
 function createPlayer() {
     if (runnerPlayer) runnerPlayer.remove();
 
@@ -280,7 +274,6 @@ function createPlayer() {
 
 function applyPlayerPosition() {
     if (!fieldRect) updateFieldMetrics();
-    // ограничения по полю
     const maxX = fieldRect.width - runnerPlayer.offsetWidth;
     const maxY = fieldRect.height - runnerPlayer.offsetHeight;
 
@@ -351,20 +344,17 @@ window.addEventListener("keyup", (e) => {
 });
 
 
-// ПЕРЕМЕННЫЕ для курсора
 let mouseDown = false;
 let touchDown = false;
 let targetCursorX = 0;
 let targetCursorY = 0;
 
-// ФУНКЦИЯ обновления цели
 function updateTargetCursor(e) {
     const rect = runnerField.getBoundingClientRect();
     targetCursorX = e.clientX - rect.left;
     targetCursorY = e.clientY - rect.top;
 }
 
-// МЫШЬ
 runnerField.addEventListener("mousedown", (e) => {
     mouseDown = true;
     updateTargetCursor(e);
@@ -376,7 +366,6 @@ runnerField.addEventListener("mousemove", (e) => {
     if (mouseDown) updateTargetCursor(e);
 });
 
-// КАСАНИЯ
 runnerField.addEventListener("touchstart", (e) => {
     touchDown = true;
     const t = e.touches[0];
@@ -396,7 +385,6 @@ runnerField.addEventListener("touchmove", (e) => {
 }, { passive: false });
 
 
-// свайпы
 let swipeStartX = 0;
 let swipeStartY = 0;
 runnerField.addEventListener(
@@ -416,12 +404,10 @@ runnerField.addEventListener(
         const dy = t.clientY - swipeStartY;
         if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
 
-        const step = 60; // пикселей за свайп
+        const step = 60;
         if (Math.abs(dx) > Math.abs(dy)) {
-            // горизонталь
             runnerPlayerPos.x += dx > 0 ? step : -step;
         } else {
-            // вертикаль
             runnerPlayerPos.y += dy > 0 ? step : -step;
         }
         applyPlayerPosition();
@@ -429,7 +415,6 @@ runnerField.addEventListener(
     { passive: true }
 );
 
-// спавн препятствий, без налезания
 function spawnObstacle() {
     if (!runnerPlaying || !fieldRect) return;
 
@@ -451,7 +436,7 @@ function spawnObstacle() {
         freeLanes[Math.floor(Math.random() * freeLanes.length)];
     const x = chosenLane * laneWidth + laneWidth / 2;
     const dir = Math.random() < 0.5 ? 1 : -1; // 1: вниз, -1: вверх
-    const speed = runnerBaseObstacleSpeed; // одинаковая скорость, можно варьировать
+    const speed = runnerBaseObstacleSpeed;
 
     const icon = iconSvgs[Math.floor(Math.random() * iconSvgs.length)];
 
@@ -481,7 +466,6 @@ function spawnObstacle() {
     runnerObstacles.push(obstacle);
 }
 
-// цикл спавна
 let spawnTimeout = null;
 function scheduleNextSpawn() {
     const delay = 200 + Math.random() * 400;
@@ -499,7 +483,6 @@ function circlesOverlap(x1, y1, r1, x2, y2, r2) {
     return distSq <= radSum * radSum;
 }
 
-// проверка столкновений
 function checkCollision() {
     const pw = runnerPlayer.offsetWidth;
     const ph = runnerPlayer.offsetHeight;
@@ -521,7 +504,6 @@ function checkCollision() {
 }
 
 
-// главный игровой цикл
 function gameLoop(timestamp) {
     if (!runnerPlaying) return;
 
@@ -559,8 +541,6 @@ function gameLoop(timestamp) {
     }
 
 
-
-    // применение движения
     if (moveX !== 0 || moveY !== 0) {
         const len = Math.hypot(moveX, moveY) || 1;
         moveX /= len;
@@ -570,20 +550,17 @@ function gameLoop(timestamp) {
         applyPlayerPosition();
     }
 
-    // движение препятствий
     runnerObstacles.forEach((o) => {
         o.y += o.dir * o.speed * dt;
         o.el.style.top = o.y + "px";
     });
 
-    // очистка
     runnerObstacles = runnerObstacles.filter((o) => {
         const outside = o.y > fieldRect.height || o.y + o.height < 0;
         if (outside) o.el.remove();
         return !outside;
     });
 
-    // финиш/столкновение (остальное без изменений)
     const maxX = fieldRect.width - runnerPlayer.offsetWidth;
     if (runnerPlayerPos.x >= maxX - 5) {
         finishedRuns++;
@@ -632,7 +609,6 @@ function stopRunner() {
 
 runnerStartBtn.addEventListener("click", startRunner);
 
-// пересчёт размеров при ресайзе
 window.addEventListener("resize", () => {
     if (!runnerField) return;
     const oldRect = fieldRect;
@@ -655,19 +631,17 @@ window.addEventListener("resize", () => {
     });
 });
 
-// предзагрузка
 iconSvgs.forEach(url => {
     const svg = new Image();
     svg.src = url;
 });
 
-// инициализация
 updateFieldMetrics();
 createPlayer();
 runnerStatus.textContent = "Нажми старт";
 
 
-/* ---------- 3. Мемо ---------- */
+/* 3 */
 const memoryGrid = document.getElementById("memoryGrid");
 const memoryStatus = document.getElementById("memoryStatus");
 const memoryResetBtn = document.getElementById("memoryResetBtn");
